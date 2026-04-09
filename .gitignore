@@ -19,3 +19,8 @@ Thumbs.db
 .edge-debug2/
 .edge-debug3/
 .edge-headless/
+
+.codex
+AGENTS.md
+tools/
+tweet_image.jpg
