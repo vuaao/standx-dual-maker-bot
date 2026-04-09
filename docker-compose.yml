@@ -1,0 +1,10 @@
+services:
+  standx-maker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: standx-dual-maker-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: ["python", "standx_bot.py"]

@@ -1,7 +1,7 @@
 PYTHON ?= python3
 PIP ?= $(PYTHON) -m pip
 
-.PHONY: install test lint run self-check dry-run setup bootstrap
+.PHONY: install test lint run self-check dry-run setup bootstrap docker-build docker-up
 
 install:
 	$(PIP) install -r requirements.txt
@@ -11,6 +11,12 @@ setup:
 
 bootstrap:
 	bash scripts/run.sh
+
+docker-build:
+	docker compose build
+
+docker-up:
+	docker compose up -d
 
 test:
 	$(PYTHON) -m unittest -v tests/test_standx_runtime_guards.py

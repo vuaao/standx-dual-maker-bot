@@ -6,15 +6,17 @@
 
 ## 最简单用法
 
-如果你希望别人拉下来后尽量少手工操作，直接用这两步：
+如果你希望别人拉下来后尽量少手工操作，直接用这三步：
 
 ```bash
+bash scripts/install.sh
 bash scripts/setup.sh
 bash scripts/run.sh
 ```
 
-第一步会交互填写私钥、地址和关键参数，并生成 `.env`。  
-第二步会自动创建虚拟环境、安装依赖、执行自检并启动机器人。
+第一步会创建虚拟环境并安装依赖。  
+第二步会交互填写私钥、地址和关键参数，并生成 `.env`。  
+第三步会执行自检并启动机器人。
 
 ## 特性
 
@@ -52,9 +54,7 @@ cd standx-dual-maker-bot
 2. 安装依赖
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+bash scripts/install.sh
 ```
 
 3. 复制配置模板
@@ -88,6 +88,7 @@ python3 standx_bot.py
 或者直接：
 
 ```bash
+bash scripts/install.sh
 bash scripts/setup.sh
 bash scripts/run.sh
 ```
@@ -98,6 +99,8 @@ bash scripts/run.sh
 make install
 make setup
 make bootstrap
+make docker-build
+make docker-up
 make test
 make lint
 make self-check
@@ -119,13 +122,13 @@ python3 standx_bot.py
 构建：
 
 ```bash
-docker build -t standx-dual-maker-bot .
+docker compose build
 ```
 
 运行：
 
 ```bash
-docker run --rm --env-file .env standx-dual-maker-bot
+docker compose up -d
 ```
 
 ## 项目结构
@@ -136,6 +139,7 @@ docker run --rm --env-file .env standx-dual-maker-bot
 ├── .github/workflows/ci.yml
 ├── CONTRIBUTING.md
 ├── Dockerfile
+├── docker-compose.yml
 ├── LICENSE
 ├── Makefile
 ├── README.md
@@ -143,7 +147,9 @@ docker run --rm --env-file .env standx-dual-maker-bot
 ├── docs/DEPLOYMENT.md
 ├── pyproject.toml
 ├── requirements.txt
-├── scripts/
+├── scripts/install.sh
+├── scripts/run.sh
+├── scripts/setup.sh
 ├── standx_bot.py
 └── tests/test_standx_runtime_guards.py
 ```
