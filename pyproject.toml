@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "standx-dual-maker-bot"
+version = "0.1.0"
+description = "A dual-side market making bot for StandX perpetual futures."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [
+  { name = "Open Source Contributors" }
+]
+dependencies = [
+  "base58",
+  "eth-account",
+  "PyNaCl",
+  "python-dotenv",
+  "requests",
+  "websocket-client",
+]
+keywords = ["standx", "trading-bot", "market-maker", "crypto", "perps"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+
+[project.scripts]
+standx-maker = "standx_bot:main"
+
+[tool.setuptools]
+py-modules = ["standx_bot"]

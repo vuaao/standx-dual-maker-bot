@@ -1,0 +1,6 @@
+base58
+eth-account
+PyNaCl
+python-dotenv
+requests
+websocket-client
