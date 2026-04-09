@@ -4,6 +4,18 @@
 
 项目目标很直接：让别人克隆仓库后，能完成安装、配置、自检、测试和试运行，而不是只拿到一个零散脚本。
 
+## 最简单用法
+
+如果你希望别人拉下来后尽量少手工操作，直接用这两步：
+
+```bash
+bash scripts/setup.sh
+bash scripts/run.sh
+```
+
+第一步会交互填写私钥、地址和关键参数，并生成 `.env`。  
+第二步会自动创建虚拟环境、安装依赖、执行自检并启动机器人。
+
 ## 特性
 
 - 双边限价挂单
@@ -73,10 +85,19 @@ python3 standx_bot.py --self-check
 python3 standx_bot.py
 ```
 
+或者直接：
+
+```bash
+bash scripts/setup.sh
+bash scripts/run.sh
+```
+
 ## 常用命令
 
 ```bash
 make install
+make setup
+make bootstrap
 make test
 make lint
 make self-check
@@ -122,6 +143,7 @@ docker run --rm --env-file .env standx-dual-maker-bot
 ├── docs/DEPLOYMENT.md
 ├── pyproject.toml
 ├── requirements.txt
+├── scripts/
 ├── standx_bot.py
 └── tests/test_standx_runtime_guards.py
 ```

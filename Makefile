@@ -1,10 +1,16 @@
 PYTHON ?= python3
 PIP ?= $(PYTHON) -m pip
 
-.PHONY: install test lint run self-check dry-run
+.PHONY: install test lint run self-check dry-run setup bootstrap
 
 install:
 	$(PIP) install -r requirements.txt
+
+setup:
+	bash scripts/setup.sh
+
+bootstrap:
+	bash scripts/run.sh
 
 test:
 	$(PYTHON) -m unittest -v tests/test_standx_runtime_guards.py
